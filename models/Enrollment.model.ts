@@ -7,6 +7,7 @@ export interface EnrollmentRecord
     enrolledAt: Temporal.Instant;
 }
 
+
 export type EnrollmentStatus = 
 | {
     status: "PENDING";
@@ -33,7 +34,7 @@ export function describeEnrollment (enrollment: EnrollmentStatus): string {
         case "DROPPED":
             return 'Dropped: ${enrollment.reason}';
         default: {
-            const_check: never = enrollment;
+            const _check: never = enrollment;
             throw new Error('unhandled status: ${JSON.stringify(_check)}'); 
         }
     }
@@ -46,3 +47,4 @@ const pending: EnrollmentStatus={
 };
 
 console.log(describeEnrollment(pending));
+
